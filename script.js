@@ -1,12 +1,16 @@
 var isDate = function (input) {
   //   write your code here
-	if(!input) return false;
-	if(!/^\d{4}-\d{2}-\d{2}$/.test(input)){ 
-		return false
-	} 
-	let date = new Date(input);
+  if (input instanceof Date) {
+	return !isNaN(input.getTime());
+  }
+	
+  if(!input) return false;
+  if(typeof input === "string" && !/^\d{4}-\d{2}-\d{2}$/.test(input)){ 
+	  let date = new Date(input);
+	  return !isNaN(date.getTime());
+   } 
+	return false
 
-    return !isNaN(date.getTime());
 };  
 
 // Do not change the code below.
